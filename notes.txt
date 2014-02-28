@@ -1,0 +1,40 @@
+Красота программного кода. Асинхронное программирование и Perl.
+==========================================================================
+
+Стуктура доклада.
+----------------
+1 Что такое красота кода.
+
+2. Код на Perl:
+    - примеры "плохого" кода;
+    - примеры плохого кода (ООП);
+
+3. Асинхронное программирование. Проблемы оформления кода.
+
+4. Примеры асинхронного кода на Perl.
+
+5. Выводы. 
+
+6. Вопросы, флейм.
+
+
+Критерии оценки красоты:
+ - с точки зрения интерпретатора (лёкгость интерпретации, возможность оптимизаций, формальная грамматика);
+ - c точки зрения программиста (понятности, выразительности, интуитивности);
+ - c точки зрения эффективности (скорость инициализации (это скорее интерпретатор), выполнения, затраты памяти).
+
+
+
+Materials:
+https://ru.wikipedia.org/wiki/%D0%98%D1%81%D1%85%D0%BE%D0%B4%D0%BD%D1%8B%D0%B9_%D0%BA%D0%BE%D0%B4 - wiki статья "Исходный код"
+http://zserge.com/talk/meetup-compilers/index.html
+http://blogs.perl.org/users/toby_inkster/2013/12/christmas-eve-obfu.html
+http://blogs.perl.org/users/buddy_burden/2013/12/perl-and-me-part-3-a-moose-once-bit-my-sister.html
+http://act.yapc.eu/ye2013/talk/4814 - Writing maintenable event driven programs with AnyEvent and Class::StateMachine.
+https://github.com/salva/s5-state-machines
+http://act.yapc.eu/ye2013/talk/4977 - Asynchronously Fantastic.
+http://www.opennet.ru/opennews/art.shtml?num=38793 -  Результаты 22 чемпионата по написанию запутанного кода на языке Си 
+http://blogs.perl.org/users/joel_berger/2014/01/on-the-relative-readability-of-perl-and-python.html - сравнение синтаксиса Perl и Python.
+http://www.gigamonkeys.com/code-reading/
+https://github.com/getify/You-Dont-Know-JS/blob/master/scope%20&%20closures/ch1.md
+http://blogs.perl.org/users/david_cantrell/2014/02/lessons-to-learn-from-apple.html
