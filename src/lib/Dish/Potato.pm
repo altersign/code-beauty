@@ -10,7 +10,7 @@ use Class::StateMachine::Declarative
     __any__ => {
         before => {
             on_water_is_boiling => sub { say '<< Вода закипела!'; },
-            on_potato_cleaned => sub { say '<< Картошка почищена!'; }
+            on_potato_peeled => sub { say '<< Картошка почищена!'; }
         },
     },
     
@@ -24,17 +24,17 @@ use Class::StateMachine::Declarative
         enter => 'start_cooking',
         transitions => {
             on_water_is_boiling => 'water_is_boiling',
-            on_potato_cleaned => 'potato_cleaned',
+            on_potato_peeled => 'potato_peeled',
         },
     },
 
     water_is_boiling => {
         transitions => {
-            on_potato_cleaned => 'potato_is_boiling',
+            on_potato_peeled => 'potato_is_boiling',
         }
     },
 
-    potato_cleaned => {
+    potato_peeled => {
         transitions => {
             on_water_is_boiling => 'potato_is_boiling',
         }
@@ -68,7 +68,7 @@ sub start_cooking {
     $self->{cv}->begin;
 
     $self->boil_water;
-    $self->clear_potatoes;
+    $self->peel_potatoes;
 }
 
 
@@ -77,22 +77,28 @@ sub boil_water {
 
     say '>> Кипятим воду...';
 
-    $self->{water} = AnyEvent->timer( after => 5*::SECONDS_IN_MINUTE, cb => sub {
-        undef $self->{water};
-        $self->on_water_is_boiling;
-    } );
+    $self->{water} = AnyEvent->timer( 
+        after => 5*::SECONDS_IN_MINUTE, 
+        cb => sub {
+            undef $self->{water};
+            $self->on_water_is_boiling;
+        } 
+    );
 }
 
 
-sub clear_potatoes {
+sub peel_potatoes {
     my $self = shift;
 
     say '>> Чистим картошку...';
 
-    $self->{potatoes} = AnyEvent->timer( after => rand(7)*::SECONDS_IN_MINUTE, cb => sub {
-        undef $self->{potatoes};
-        $self->on_potato_cleaned;
-    } );
+    $self->{potatoes} = AnyEvent->timer( 
+        after => rand(7)*::SECONDS_IN_MINUTE, 
+        cb => sub {
+            undef $self->{potatoes};
+            $self->on_potato_peeled;
+        } 
+    );
 }
 
 
@@ -101,10 +107,13 @@ sub drop_potatoes {
 
     say '>> Варим картошку...';
 
-    $self->{potatoes} = AnyEvent->timer( after => 10*::SECONDS_IN_MINUTE, cb => sub {
-        undef $self->{potatoes};
-        $self->on_potato_ready;
-    } );
+    $self->{potatoes} = AnyEvent->timer(
+        after => 10*::SECONDS_IN_MINUTE,
+        cb => sub {
+            undef $self->{potatoes};
+            $self->on_potato_ready;
+        }
+    );
 }
 
 
