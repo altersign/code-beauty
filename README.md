@@ -1,7 +1,7 @@
 Beauty of the code
 ==================
 
-A text, presentation and sources of my talk 
+Text, presentation and sources of my talk 
 "Beauty of the program code. Async programming and Perl" for the fourth Zaporizhzhya developers meetup.
 
 http://moxa.ws/ru/devzpmeetup-4/
